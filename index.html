@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huyền Học Tâm Linh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        /* Custom CSS (Ghi đè và bổ sung cho Bootstrap) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ví dụ font */
+            line-height: 1.7;
+            color: #444;
+            background-color: #f8f9fa; /* Màu nền nhẹ */
+        }
+
+        header {
+            background-color: #343a40; /* Màu tối */
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px; /* Cách section dưới */
+        }
+
+        header h1 {
+            font-size: 3rem; /* Lớn hơn một chút */
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        header .subtitle {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        .navbar {
+            background-color: #343a40 !important; /* Ghi đè màu mặc định của Bootstrap */
+            border-bottom: 1px solid #555; /* Đường kẻ dưới */
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;  /* Màu chữ cho link */
+        }
+      .navbar-nav .nav-link:hover {
+          color: #f8f9fa !important;/*màu hover*/
+          text-decoration:underline;
+      }
+
+        section {
+            padding: 40px 0; /* Thêm padding trên dưới */
+        }
+
+        .articles {
+            /* Sử dụng Bootstrap Grid */
+            row-gap: 2rem; /* Khoảng cách giữa các hàng */
+        }
+
+        .article {
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 0.25rem; /* Bo góc nhẹ */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+         /* Hiệu ứng hover cho article */
+        .article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .article img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.25rem; /* Bo góc ảnh */
+            margin-bottom: 1rem;
+        }
+
+        .article h3 a {
+            color: #007bff; /* Màu link (giống Bootstrap) */
+            text-decoration: none;
+        }
+        .article h3 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form liên hệ */
+        #lien-he form label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: bold;
+        }
+      #lien-he form input[type="text"],
+      #lien-he form input[type="email"],
+      #lien-he form textarea {
+        border-radius: 0.3rem; /* Thêm border-radius */
+      }
+
+        #lien-he input[type="submit"] {
+          background-color: #0d6efd; /* Bootstrap primary color */
+          border-color: #0d6efd;
+          transition: background-color 0.3s, border-color 0.3s; /* Hiệu ứng mượt */
+
+        }
+      #lien-he input[type="submit"]:hover{
+        background-color: #0b5ed7;  /* Màu tối hơn khi hover */
+        border-color: #0a58ca;
+      }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        /* Responsive adjustments (nếu cần thiết, Bootstrap đã làm phần lớn) */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem; /* Nhỏ hơn trên mobile */
+            }
+          /*chỉnh navbar*/
+          .navbar-toggler {
+              border-color:#fff;
+          }
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Huyền Học Tâm Linh</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Trang Chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#gioi-thieu">Giới Thiệu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#kien-thuc">Kiến Thức</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lien-he">Liên Hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <h1>Huyền Học &amp; Tâm Linh</h1>
+        <p class="subtitle">Khám phá bí ẩn của vũ trụ và chính bạn</p>
+    </header>
+
+    <main class="container">
+        <section id="gioi-thieu">
+            <h2>Giới Thiệu</h2>
+            <p>
+                Chào mừng bạn đến với không gian của huyền học và tâm linh. Nơi đây chia sẻ kiến thức, kinh nghiệm và những góc nhìn sâu sắc về các lĩnh vực như:
+            </p>
+            <ul>
+                <li>Chiêm tinh học</li>
+                <li>Phong thủy</li>
+                <li>Thiền định</li>
+                <li>Năng lượng và luân xa</li>
+                <li>Giải mã giấc mơ</li>
+                <li>Và nhiều chủ đề khác...</li>
+            </ul>
+            <p>Chúng tôi tin rằng, hành trình khám phá tâm linh là hành trình tìm về bản ngã, kết nối với vũ trụ và đạt được sự bình an nội tại.</p>
+        </section>
+
+        <section id="kien-thuc">
+            <h2>Kiến Thức</h2>
+            <div class="articles row">
+                <div class="col-md-6 col-lg-4">
+                  <article class = "article">
+                      <img src="https://via.placeholder.com/400x250" alt="Ảnh minh họa 1" class="img-fluid">
+                      <h3><a href="#">Luân xa là gì? Cách khai mở và cân bằng</a></h3>
+                      <p>Luân xa (Chakra) là các trung tâm năng lượng trong cơ thể...</p>
+                  </article>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <article class = "article">
+                      <img src="https://via.placeholder.com/400x250" alt="Ảnh minh họa 2" class="img-fluid">
+                      <h3><a href="#">Ý nghĩa các con số trong thần số học</a></h3>
+                      <p>Thần số học (Numerology) là một hệ thống tin rằng...</p>
+                  </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="article">
+                      <img src="https://via.placeholder.com/400x250" alt="Ảnh minh họa 3" class="img-fluid">
+                        <h3><a href="#">Hướng dẫn thiền định cho người mới bắt đầu</a></h3>
+                        <p>Thiền định là một phương pháp thực hành giúp tĩnh tâm...</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="lien-he">
+            <h2>Liên Hệ</h2>
+            <p>Bạn có câu hỏi, chia sẻ, hay muốn đóng góp cho trang web? Hãy liên hệ với chúng tôi qua:</p>
+           <p>Email: lienhe@huyenhoctamlinh.com (thay bằng email thật)</p>
+           <p>Hoặc để lại tin nhắn tại đây:</p>
+
+             <form action="#" method="post">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Họ và tên:</label>
+                  <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="message" class="form-label">Tin nhắn:</label>
+                  <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Gửi</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Huyền Học Tâm Linh. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
