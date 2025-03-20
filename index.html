@@ -7,104 +7,193 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>
-        /* Custom CSS (Ghi đè và bổ sung cho Bootstrap) */
+        /* Custom CSS */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ví dụ font */
-            line-height: 1.7;
-            color: #444;
-            background-color: #f8f9fa; /* Màu nền nhẹ */
+            font-family: 'Merriweather', serif; /* Font chữ có chân, thanh lịch */
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa;
         }
 
         header {
-            background-color: #343a40; /* Màu tối */
+            background: linear-gradient(135deg, #667eea, #764ba2); /* Gradient background */
             color: #fff;
-            padding: 30px 0;
+            padding: 40px 0; /* Tăng padding */
             text-align: center;
-            margin-bottom: 30px; /* Cách section dưới */
+            margin-bottom: 30px;
+            position: relative; /* Để tạo pseudo-element */
+            overflow: hidden; /* Ẩn các phần tử vượt quá */
+
+        }
+      /* Tạo hiệu ứng "sao băng" */
+        header::before,
+        header::after {
+          content: '';
+          position: absolute;
+          width: 100px;  /* Kích thước vệt sáng */
+          height: 2px;  /* Chiều dày */
+          background: rgba(255, 255, 255, 0.6);  /* Màu trắng trong suốt */
+          border-radius: 50%;
+          animation: shootingStar 5s linear infinite; /* Hoạt ảnh */
         }
 
+        header::before {
+            top: 20%;
+            left: -100px; /* Bắt đầu ngoài màn hình */
+            animation-delay: 0s;
+        }
+
+        header::after {
+            top: 60%;
+            left: -200px; /* Bắt đầu ngoài màn hình, vị trí khác */
+            animation-delay: 2s; /* Xuất hiện sau */
+        }
+      @keyframes shootingStar {
+        0% {
+          transform: translateX(0) translateY(0) rotate(-45deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(200vw) translateY(-200vh) rotate(-45deg); /* Đi chéo qua màn hình */
+          opacity: 0;
+        }
+      }
+
         header h1 {
-            font-size: 3rem; /* Lớn hơn một chút */
+            font-size: 3.5rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Đổ bóng chữ */
         }
 
         header .subtitle {
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            opacity: 0.9;
         }
 
         .navbar {
-            background-color: #343a40 !important; /* Ghi đè màu mặc định của Bootstrap */
-            border-bottom: 1px solid #555; /* Đường kẻ dưới */
+            background-color: transparent !important; /* Trong suốt */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Đường kẻ mờ */
+        }
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: bold;
         }
         .navbar-nav .nav-link {
-            color: #fff !important;  /* Màu chữ cho link */
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 0.5rem 1rem; /* Thêm padding */
+            margin: 0 0.5rem; /* Thêm margin */
+            transition: all 0.3s ease; /* Hiệu ứng mượt */
+            border-radius: 5px; /* Bo góc */
+
         }
-      .navbar-nav .nav-link:hover {
-          color: #f8f9fa !important;/*màu hover*/
-          text-decoration:underline;
-      }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+            color: #fff !important;
+            background-color: rgba(255, 255, 255, 0.2); /* Màu nền khi hover/active */
+            text-decoration: none;
+        }
+         .navbar-toggler {
+            border-color: rgba(255,255,255,0.5) !important;
+        }
+        .navbar-toggler-icon{
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
 
         section {
-            padding: 40px 0; /* Thêm padding trên dưới */
+            padding: 50px 0; /* Tăng padding */
         }
 
         .articles {
-            /* Sử dụng Bootstrap Grid */
-            row-gap: 2rem; /* Khoảng cách giữa các hàng */
+            row-gap: 3rem;
         }
 
         .article {
-            border: 1px solid #dee2e6;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 0.25rem; /* Bo góc nhẹ */
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-         /* Hiệu ứng hover cho article */
-        .article:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none; /* Loại bỏ border mặc định */
+            padding: 0;    /* Loại bỏ padding mặc định */
+            background-color: transparent; /* Trong suốt */
+            border-radius: 10px;
+            overflow: hidden;  /* Cắt phần thừa */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;/* Để làm nổi bật z-index*/
         }
 
+        /* Zoom card khi hover */
+        .article:hover {
+            transform: scale(1.05); /* Phóng to */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Bóng đổ lớn hơn */
+            z-index: 10; /* Đảm bảo nổi lên trên */
+        }
+
+        .article-image-wrapper {
+          overflow: hidden; /* Đảm bảo ảnh không bị tràn ra ngoài */
+
+        }
         .article img {
             width: 100%;
-            height: auto;
-            border-radius: 0.25rem; /* Bo góc ảnh */
-            margin-bottom: 1rem;
+            height: 250px; /* Cố định chiều cao, tránh nhảy layout */
+            object-fit: cover; /* Đảm bảo ảnh lấp đầy */
+            border-radius: 10px 10px 0 0; /* Bo góc trên */
+            transition: transform 0.5s ease; /* Hiệu ứng zoom */
+            display: block;
+
+        }
+        /*Zoom ảnh khi hover vào card*/
+        .article:hover .article-image-wrapper img {
+          transform: scale(1.1); /* Zoom ảnh */
+        }
+
+        .article-content {
+          padding: 20px;
+          background-color: #fff; /* Nền trắng cho phần nội dung */
+           border-radius: 0 0 10px 10px;
+        }
+        .article h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .article h3 a {
-            color: #007bff; /* Màu link (giống Bootstrap) */
+            color: #343a40;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .article h3 a:hover{
+          color: #007bff; /* Đổi màu khi hover */
+        }
+
+        .article p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Dropdown */
+        .dropdown-menu {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            min-width: 200px; /* Rộng hơn */
+        }
+
+        .dropdown-item {
+            color: #333;
+            padding: 8px 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
             text-decoration: none;
         }
-        .article h3 a:hover {
-            text-decoration: underline;
-        }
 
-        /* Form liên hệ */
-        #lien-he form label {
-          display: block;
-          margin-bottom: 0.5rem;
-          font-weight: bold;
-        }
-      #lien-he form input[type="text"],
-      #lien-he form input[type="email"],
-      #lien-he form textarea {
-        border-radius: 0.3rem; /* Thêm border-radius */
-      }
-
-        #lien-he input[type="submit"] {
-          background-color: #0d6efd; /* Bootstrap primary color */
-          border-color: #0d6efd;
-          transition: background-color 0.3s, border-color 0.3s; /* Hiệu ứng mượt */
-
-        }
-      #lien-he input[type="submit"]:hover{
-        background-color: #0b5ed7;  /* Màu tối hơn khi hover */
-        border-color: #0a58ca;
-      }
         footer {
             text-align: center;
             padding: 20px 0;
@@ -112,117 +201,160 @@
             color: #fff;
         }
 
-        /* Responsive adjustments (nếu cần thiết, Bootstrap đã làm phần lớn) */
+        /* Responsive */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2.5rem; /* Nhỏ hơn trên mobile */
+                font-size: 2.5rem;
             }
-          /*chỉnh navbar*/
-          .navbar-toggler {
-              border-color:#fff;
-          }
+            .article h3 {
+              font-size: 1.2rem;
+            }
         }
+
     </style>
 </head>
 <body>
     <header>
-       <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="#">Huyền Học Tâm Linh</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Trang Chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#gioi-thieu">Giới Thiệu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#kien-thuc">Kiến Thức</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#lien-he">Liên Hệ</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Trang Chủ</a>
+                        </li>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Phần Mềm
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="/luc-hao">Lục Hào</a></li>
+                                <li><a class="dropdown-item" href="/mai-hoa">Mai Hoa</a></li>
+                                <li><a class="dropdown-item" href="/ky-mon">Kỳ Môn Độn Giáp</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Kiến Thức
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#kinh-dich">Kinh Dịch</a></li>
+                                <li><a class="dropdown-item" href="#thien">Thiền</a></li>
+                                <li><a class="dropdown-item" href="#tan-man">Tản Mạn</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./lien-he.html">Liên Hệ</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
 
         <h1>Huyền Học &amp; Tâm Linh</h1>
         <p class="subtitle">Khám phá bí ẩn của vũ trụ và chính bạn</p>
     </header>
 
     <main class="container">
-        <section id="gioi-thieu">
-            <h2>Giới Thiệu</h2>
+      <section id = "gioi-thieu">
+       <h2>Giới Thiệu</h2>
             <p>
-                Chào mừng bạn đến với không gian của huyền học và tâm linh. Nơi đây chia sẻ kiến thức, kinh nghiệm và những góc nhìn sâu sắc về các lĩnh vực như:
+                Chào mừng bạn đến với không gian của huyền học và tâm linh. Nơi đây chia sẻ kiến thức, kinh nghiệm và những góc nhìn sâu sắc về các lĩnh vực.
             </p>
-            <ul>
-                <li>Chiêm tinh học</li>
-                <li>Phong thủy</li>
-                <li>Thiền định</li>
-                <li>Năng lượng và luân xa</li>
-                <li>Giải mã giấc mơ</li>
-                <li>Và nhiều chủ đề khác...</li>
-            </ul>
-            <p>Chúng tôi tin rằng, hành trình khám phá tâm linh là hành trình tìm về bản ngã, kết nối với vũ trụ và đạt được sự bình an nội tại.</p>
-        </section>
-
+      </section>
         <section id="kien-thuc">
             <h2>Kiến Thức</h2>
             <div class="articles row">
-                <div class="col-md-6 col-lg-4">
-                  <article class = "article">
-                      <img src="https://via.placeholder.com/400x250" alt="Ảnh minh họa 1" class="img-fluid">
-                      <h3><a href="#">Luân xa là gì? Cách khai mở và cân bằng</a></h3>
-                      <p>Luân xa (Chakra) là các trung tâm năng lượng trong cơ thể...</p>
-                  </article>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <article class = "article">
-                      <img src="https://via.placeholder.com/400x250" alt="Ảnh minh họa 2" class="img-fluid">
-                      <h3><a href="#">Ý nghĩa các con số trong thần số học</a></h3>
-                      <p>Thần số học (Numerology) là một hệ thống tin rằng...</p>
-                  </article>
-                </div>
 
                 <div class="col-md-6 col-lg-4">
-                    <article class="article">
-                      <img src="https://via.placeholder.com/400x250" alt="Ảnh minh họa 3" class="img-fluid">
-                        <h3><a href="#">Hướng dẫn thiền định cho người mới bắt đầu</a></h3>
-                        <p>Thiền định là một phương pháp thực hành giúp tĩnh tâm...</p>
+                    <article class="article" id="kinh-dich">
+                      <div class="article-image-wrapper">
+                        <img src="./IMG/ADBQ.png" alt="Âm Dương Bát Quái" class="img-fluid">
+                      </div>
+
+                        <div class="article-content">
+                          <h3><a href="#">Kinh Dịch</a></h3>
+                          <p>Kiến thức về Kinh Dịch</p>
+                          <p>Về Âm-Dương Bát Quái, Dịch Lý, Dịch Tượng, Dịch Số</p>
+                          <p>Dịch Y Lý, Đông Y, chữa bệnh dựa vào nền tảng Kinh Dịch</p>
+                          <p>Xem Quẻ: Lục Hào, Mai Hoa, Thái Ất, Lục Nhâm, Kỳ Môn, Tử Vi, Bát Tự</p>
+                        </div>
                     </article>
                 </div>
-            </div>
-        </section>
 
-        <section id="lien-he">
-            <h2>Liên Hệ</h2>
-            <p>Bạn có câu hỏi, chia sẻ, hay muốn đóng góp cho trang web? Hãy liên hệ với chúng tôi qua:</p>
-           <p>Email: lienhe@huyenhoctamlinh.com (thay bằng email thật)</p>
-           <p>Hoặc để lại tin nhắn tại đây:</p>
-
-             <form action="#" method="post">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Họ và tên:</label>
-                  <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email:</label>
-                  <input type="email" class="form-control" id="email" name="email" required>
+                <div class="col-md-6 col-lg-4">
+                    <article class="article" id="thien-dinh">
+                        <div class="article-image-wrapper">
+                          <img src="./IMG/Meditation.png" alt="Thiền" class="img-fluid">
+                        </div>
+  
+                          <div class="article-content">
+                            <h3><a href="#">Thiền</a></h3>
+                            <p>Hướng dẫn cơ bản, lợi ích và các phương pháp thiền khác nhau.</p>
+                            <p>Thiền quán, thiền định, thiền minh sát, thiền tứ niệm xứ, thiền động</p>
+                            <p>Thiết kế về bài học cuộc đời.</p>
+                            <p>Hiểu về nghiệp quả, hiểu về chính mình.</p>
+                          </div>
+                      </article>
                 </div>
 
-                <div class="mb-3">
-                  <label for="message" class="form-label">Tin nhắn:</label>
-                  <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                <div class="col-md-6 col-lg-4">
+                    <article class="article" id="tan-man">
+                      <div class="article-image-wrapper">
+                        <img src="./IMG/Discussion.png" alt="Tản Mạn" class="img-fluid">
+                      </div>
+
+                        <div class="article-content">
+                          <h3><a href="#">Tản mạn</a></h3>
+                          <p>Tôi là ai, bạn là ai ?</p>
+                          <p>Thế giới muôn màu. Lăng kính của bản ngã.</p>
+                          <p>Chia sẻ sự quan sát và trải nghiệm cuộc đời.</p>
+                          <p>Thời gian - không gian và tôi.</p>
+                          <p>Trở về..</p>
+                        </div>
+                    </article>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Gửi</button>
-            </form>
+                </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Huyền Học Tâm Linh. All rights reserved.</p>
+        <p>&copy; 2025 Huyền Học Tâm Linh. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // JavaScript để xử lý active class cho dropdown (Bootstrap 5 không tự làm)
+        document.addEventListener("DOMContentLoaded", function(){
+          // Lấy tất cả các dropdown item
+            var dropdownItems = document.querySelectorAll('.dropdown-item');
+
+            // Lặp qua từng item
+            dropdownItems.forEach(function(item) {
+                // Thêm sự kiện click
+                item.addEventListener('click', function(event) {
+                   //Xóa class active ở tất cả item
+                    dropdownItems.forEach(function(i){
+                      i.classList.remove('active');
+                    });
+                    // Thêm class active vào item được click
+                    this.classList.add('active');
+
+                    // Cập nhật text và link của dropdown toggle (nếu muốn)
+                    var dropdownToggle = this.closest('.dropdown').querySelector('.dropdown-toggle');
+                    dropdownToggle.textContent = this.textContent;
+                    dropdownToggle.href = this.href;
+
+                    // Ngăn chặn hành vi mặc định (chuyển trang) *nếu không muốn*
+                    //event.preventDefault();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
