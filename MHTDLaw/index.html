@@ -3,9 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-		<meta http-equiv="Pragma" content="no-cache" />
-		<meta http-equiv="Expires" content="0" />
+
 		<title></title>
 		<script type="text/javascript" src="./JS/jquery-3.3.1.js"></script>
 
@@ -55,21 +53,6 @@
 				$("#content-ngaythang").fadeIn(200).removeClass("d-none");
 				$("#btn_lapquedich").fadeIn(200).removeClass("d-none");
 
-				function setupClickAmDuong(index) {
-					$("#hao" + index).click(function () {
-						if ($("#hao" + index).attr("aria-pressed") === "true") {
-							$("#hao" + index).attr("aria-pressed", false);
-							$("#hao" + index).html("▔&#8287;&#8202;&#8287;&#8202;▔");
-						} else {
-							$("#hao" + index).attr("aria-pressed", true);
-							$("#hao" + index).text("▔▔▔");
-						}
-					});
-				}
-				for (let i = 0; i <= 6; ++i) {
-					setupClickAmDuong(i);
-				}
-
                 var today = new Date();
 				var currentDate = today.getDate();
 				var currentMonth = today.getMonth() + 1;
@@ -95,31 +78,32 @@
 						<div class="col-sm-8 col-md-7 py-4">
 							<h4 class="text-white">About</h4>
 							<p class="text-primary">
-								Trang lập quẻ lục hào được tạo ra bởi
-								<b class="text-white">Charon Nyx</b>.<br />
+								Trang lập quẻ lục hào được tạo ra bởi vợ chồng nhà
+								<b class="text-white">Diệp</b>.<br />
+
 								<a
 									class="text-white"
-									href="https://www.facebook.com/groups/minhtrietcoxua"
+									href="https://www.facebook.com/groups/kinhdichhoi.luchao"
 									>Ấn vào đây</a
 								>
 								để truy cập nhóm
 								<a
 									class="text-white"
-									href="https://www.facebook.com/groups/minhtrietcoxua"
-									>Minh Triết Cổ Xưa</a
+									href="https://www.facebook.com/groups/kinhdichhoi.luchao"
+									>Kinh Dịch Hội Lục Hào</a
 								>.<br />
 								Hãy
 								<a
 									class="text-white"
-									href="https://www.facebook.com/groups/minhtrietcoxua"
+									href="https://www.facebook.com/groups/kinhdichhoi.luchao"
 									>tham gia nhóm</a
 								>
 								để được
 								<b
 									><a
 										class="text-white"
-										href="https://www.facebook.com/groups/minhtrietcoxua"
-										>trò chuyện và giải đáp miễn phí bởi các chuyên gia từ khắp bốn phương.</a
+										href="https://www.facebook.com/groups/kinhdichhoi.luchao"
+										>luận giải QUẺ DỊCH miễn phí</a
 									></b
 								>.
 							</p>
@@ -129,16 +113,23 @@
 							<ul class="list-unstyled">
 								<li>
 									<a
-										href="https://www.facebook.com/groups/minhtrietcoxua"
+										href="https://www.facebook.com/groups/kinhdichhoi.luchao"
 										class="text-white"
-										>Nhóm Minh Triết Cổ Xưa</a
+										>Nhóm Kinh Dịch Hội Lục Hào</a
 									>
 								</li>
 								<li>
 									<a
-										href="https://www.facebook.com/ThienDaoThuVien/"
+										href="https://www.facebook.com/tuemanpda"
 										class="text-white"
-										>Facebook Charon Nyx</a
+										>Facebook Diệp Ẩn</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.facebook.com/profile.php?id=100080622442917"
+										class="text-white"
+										>Facebook Ẩn Diệp</a
 									>
 								</li>
 							</ul>
@@ -172,7 +163,7 @@
 								/>
 							</g>
 						</svg>
-						<strong>Lập Quẻ Lục Hào</strong>
+						<strong>Lập Quẻ Mai Hoa Dịch Số</strong>
 					</a>
 					<button
 						class="navbar-toggler"
@@ -195,11 +186,35 @@
 			<div class="container-sm border">
 				<div id="content-loading"><h1>Loading...</h1></div>
 				<div
-                    id="content-quedich"
+					id="content-quedich"
 					class="d-none row d-flex justify-content-left bg-dark text-white"
 				>
-					<div class="col-md-12 col-lg-9 col-xl-6 col-sm-12 col-12 pt-5 mb-5">
-						<p>Ngẫu nhiên lên quẻ đa động.</p>
+					<div class="col-md-12 col-lg-9 col-xl-6 col-sm-12 col-12">
+						<table class="table table-dark">
+							<tbody>
+								<tr>
+									<th scope="row">Dạng quẻ:</th>
+									<td>
+										<button type="button" id="TypeQue_Default" disabled class="btn btn-primary">Mặc Định</button>
+									</td>
+									<td>
+										<button type="button" id="TypeQue_FullChi" class="btn btn-primary">Dùng Chi</button>
+									</td>
+									<td>
+										<button type="button" id="TypeQue_FullCan" class="btn btn-primary">Dùng Can</button>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">Dùng Tiết Khí:</th>
+									<td>
+										<button type="button" id="TietKhi_No" disabled class="btn btn-primary">Không Tiết Khí</button>
+									</td>
+									<td>
+										<button type="button" id="TietKhi_Yes" class="btn btn-primary">Có Tiết Khí</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 				<div
@@ -464,20 +479,20 @@
                 <div class="content-button pt-2">
 					<div class="d-grid gap-2">
 						<button
+							disabled="disabled"
 							id="btn_lapquedich"
 							type="button"
 							class="d-none btn btn-primary btn-lg btn-block"
 						>
-							Lập Quẻ Lục Hào
+							Lập Quẻ Thời Gian Mai Hoa
 						</button>
 					</div>
 				</div>
 
 				<canvas id="canvas" class="d-none img-fluid pt-5" width="1440" height="1440"></canvas>
-				<div id="tiles" class="d-none"></div>
 			</div>
 
 		</main>
-		<script type="module" src="./JS/AnQue/ANQUE.js?ld=1"></script>
+		<script type="module" src="./JS/AnQue/ANQUE.js"></script>
 	</body>
 </html>

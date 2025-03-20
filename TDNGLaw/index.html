@@ -55,21 +55,6 @@
 				$("#content-ngaythang").fadeIn(200).removeClass("d-none");
 				$("#btn_lapquedich").fadeIn(200).removeClass("d-none");
 
-				function setupClickAmDuong(index) {
-					$("#hao" + index).click(function () {
-						if ($("#hao" + index).attr("aria-pressed") === "true") {
-							$("#hao" + index).attr("aria-pressed", false);
-							$("#hao" + index).html("▔&#8287;&#8202;&#8287;&#8202;▔");
-						} else {
-							$("#hao" + index).attr("aria-pressed", true);
-							$("#hao" + index).text("▔▔▔");
-						}
-					});
-				}
-				for (let i = 0; i <= 6; ++i) {
-					setupClickAmDuong(i);
-				}
-
                 var today = new Date();
 				var currentDate = today.getDate();
 				var currentMonth = today.getMonth() + 1;
@@ -95,31 +80,32 @@
 						<div class="col-sm-8 col-md-7 py-4">
 							<h4 class="text-white">About</h4>
 							<p class="text-primary">
-								Trang lập quẻ lục hào được tạo ra bởi
-								<b class="text-white">Charon Nyx</b>.<br />
+								Trang lập quẻ lục hào được tạo ra bởi vợ chồng nhà
+								<b class="text-white">Diệp</b>.<br />
+
 								<a
 									class="text-white"
-									href="https://www.facebook.com/groups/minhtrietcoxua"
+									href="https://www.facebook.com/groups/kinhdichhoi.luchao"
 									>Ấn vào đây</a
 								>
 								để truy cập nhóm
 								<a
 									class="text-white"
-									href="https://www.facebook.com/groups/minhtrietcoxua"
-									>Minh Triết Cổ Xưa</a
+									href="https://www.facebook.com/groups/kinhdichhoi.luchao"
+									>Kinh Dịch Hội Lục Hào</a
 								>.<br />
 								Hãy
 								<a
 									class="text-white"
-									href="https://www.facebook.com/groups/minhtrietcoxua"
+									href="https://www.facebook.com/groups/kinhdichhoi.luchao"
 									>tham gia nhóm</a
 								>
 								để được
 								<b
 									><a
 										class="text-white"
-										href="https://www.facebook.com/groups/minhtrietcoxua"
-										>trò chuyện và giải đáp miễn phí bởi các chuyên gia từ khắp bốn phương.</a
+										href="https://www.facebook.com/groups/kinhdichhoi.luchao"
+										>luận giải QUẺ DỊCH miễn phí</a
 									></b
 								>.
 							</p>
@@ -129,16 +115,23 @@
 							<ul class="list-unstyled">
 								<li>
 									<a
-										href="https://www.facebook.com/groups/minhtrietcoxua"
+										href="https://www.facebook.com/groups/kinhdichhoi.luchao"
 										class="text-white"
-										>Nhóm Minh Triết Cổ Xưa</a
+										>Nhóm Kinh Dịch Hội Lục Hào</a
 									>
 								</li>
 								<li>
 									<a
-										href="https://www.facebook.com/ThienDaoThuVien/"
+										href="https://www.facebook.com/tuemanpda"
 										class="text-white"
-										>Facebook Charon Nyx</a
+										>Facebook Diệp Ẩn</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.facebook.com/profile.php?id=100080622442917"
+										class="text-white"
+										>Facebook Ẩn Diệp</a
 									>
 								</li>
 							</ul>
@@ -172,7 +165,7 @@
 								/>
 							</g>
 						</svg>
-						<strong>Lập Quẻ Lục Hào</strong>
+						<strong>Lập Quẻ Chọn Số</strong>
 					</a>
 					<button
 						class="navbar-toggler"
@@ -199,7 +192,12 @@
 					class="d-none row d-flex justify-content-left bg-dark text-white"
 				>
 					<div class="col-md-12 col-lg-9 col-xl-6 col-sm-12 col-12 pt-5 mb-5">
-						<p>Ngẫu nhiên lên quẻ đa động.</p>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-InputSoLenQue">Số Lên Quẻ</span>
+							</div>
+							<input id="SoLenQue" type="text" class="form-control" placeholder="3 hoặc 4 hoặc 6 hoặc 8 Số" aria-label="SoLenQue" aria-describedby="basic-InputSoLenQue1">
+						</div>
 					</div>
 				</div>
 				<div
@@ -468,16 +466,15 @@
 							type="button"
 							class="d-none btn btn-primary btn-lg btn-block"
 						>
-							Lập Quẻ Lục Hào
+							Lập Quẻ Chọn Số
 						</button>
 					</div>
 				</div>
 
 				<canvas id="canvas" class="d-none img-fluid pt-5" width="1440" height="1440"></canvas>
-				<div id="tiles" class="d-none"></div>
 			</div>
 
 		</main>
-		<script type="module" src="./JS/AnQue/ANQUE.js?ld=1"></script>
+		<script type="module" src="./JS/AnQue/ANQUE.js?ID=2134"></script>
 	</body>
 </html>
